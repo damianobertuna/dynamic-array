@@ -36,6 +36,23 @@ class DynamicArray(object):
         self.A[index] = elem
         self.actualNumElement += 1
 
+    def delete(self):
+        if self.actualNumElement == 0:
+            raise Exception('The array is empty')
+
+        self.A[self.actualNumElement-1] = 0
+        self.actualNumElement -= 1
+
+    def removeAt(self, index):
+        if index < 0 or index > self.actualNumElement:
+            raise Exception('Index not found')
+
+        for i in range(index, self.actualNumElement-1):
+            self.A[i] = self.A[i+1]
+
+        self.actualNumElement -= 1
+
+
     def __resize(self, newCapacity):
         B = self.make_array(newCapacity)
         for index in range(self.actualNumElement):
