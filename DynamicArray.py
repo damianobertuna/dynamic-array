@@ -17,6 +17,7 @@ class DynamicArray(object):
         return self.A[index]
 
     def append(self, element):
+        print("Append: ", element)
         if self.actualNumElement == self.capacity:
             self.__resize(2 * self.capacity)
 
@@ -24,6 +25,8 @@ class DynamicArray(object):
         self.actualNumElement += 1
 
     def insertAt(self, index, elem):
+        print("insertAt: ", index, elem)
+
         if index < 0 or index > self.actualNumElement:
             raise Exception('Index not permitted')
 
@@ -37,6 +40,8 @@ class DynamicArray(object):
         self.actualNumElement += 1
 
     def delete(self):
+        print("delete")
+
         if self.actualNumElement == 0:
             raise Exception('The array is empty')
 
@@ -44,6 +49,8 @@ class DynamicArray(object):
         self.actualNumElement -= 1
 
     def removeAt(self, index):
+        print("removeAt: ", index)
+
         if index < 0 or index > self.actualNumElement:
             raise Exception('Index not found')
 
@@ -65,6 +72,7 @@ class DynamicArray(object):
         return (capacity * ctypes.py_object)()
 
     def __str__(self):
+        print("The array is: ")
         arrayString = '['
         for i in range(0, self.actualNumElement):
             arrayString += str(self.A[i]) + ", "
